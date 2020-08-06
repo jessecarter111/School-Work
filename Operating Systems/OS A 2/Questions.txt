@@ -1,0 +1,28 @@
+1. XCPU_PRINT() is not thread safe. XCPU_PRINT() is producing lots of output to STDOUT. If multiple threads were to execute this method at the same time, the output from all the threads would be interwoven and hence appear garbled as the print statements are being executed by the different threads at the same time. By locking XCPU_PRINT() we ensure that only 1 thread gets to execute the method at a time, meaning we will get the correct output.
+
+2. To properly test atomic instructions, we require the scheduler to alternat between 2 or more threads executing the instruction at a time. While likely, this is not something we can guarentee as we do not control the scheduler on bluenose. To compensate for this, we need to execute the atomic instruction test potentially hundreds of times to insure we encounter a situation where the scheduler has allowed multiple threads to execute the instruction at once.
+
+
+3. 
+Global Var. lock = 0
+
+lock(){
+	loop:
+		CMP lock, 0
+		BR
+
+	Branch:
+		LOADA r1, 1
+		SWAP r1, lock
+}
+
+unlock(){
+	CMP r1, 1
+	BR
+
+	Branch: 
+		LOADA r1, 0
+		SWAP r1, lock
+}
+
+4. The program would maintain a global counter variable. Each time a new CPU was instantiated, the global counter would be incremented then the CPU would retireve the value of the global counter as its ID. However, the counter would not be decremented as CPUs were terminated as this may lead to CPUs having the same ID. 

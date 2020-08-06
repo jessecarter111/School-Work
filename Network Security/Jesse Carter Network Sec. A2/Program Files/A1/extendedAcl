@@ -1,0 +1,4 @@
+Access-List 1 permit tcp 192.167.0.0 0.0.255.255 192.168.0.0 0.0.255.255 eq 80
+Access-List 1 deny tcp any 192.167.14.0 0.0.0.255 eq 23
+Access-List 1 permit ip any any eq 161
+

@@ -1,0 +1,25 @@
+1. build & run
+~~~~~~~~~~~~~~
+
+	./build
+	./polyphase_test
+
+
+2. build & test
+~~~~~~~--------
+
+	./test
+
+
+3. view waveforms output
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+	audacity (load and view "*.wav" plot spectrum)
+
+		polyphase_raw.wav
+			ch 1: raw 16ksps
+
+		polyphase_test.wav
+			ch 1: canonical FIR & decimated to 8ksps
+			ch 2: polyphase FIR & decimated to 8ksps
+			ch 3: error signal between the two filters

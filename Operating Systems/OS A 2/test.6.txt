@@ -1,0 +1,1 @@
+The reason this is a valid test of the cpuid instruction is because it will print the ID of each tread ("cpu" in terms Xsim) that executes this test. Another instruction is executed after cpuid to insure that the correct cpuID is still being displayed.

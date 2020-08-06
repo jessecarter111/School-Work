@@ -1,0 +1,44 @@
+  loadi 1, r1
+  loadi 2, r2
+  loadi -1, r3
+  loadi 0, r4
+forloop:
+  dec r4
+  test r4, r4
+  br loop
+  jr done
+loop:
+  inp   r2, r0
+  br output
+  jr loop
+output:
+  cpuid r0
+  outpa r0, r1
+  br forloop
+  jr output
+done:                  # wait until all lower threads increment, barrier
+  loadi barrier, r0
+  load r0, r1
+  cpuid r2
+  equ r2, r1
+  br end
+  jr done
+end:                   # increment barrier, and if not on cpu 0, quit
+  inc r1
+  stor r1, r0
+  test r2, r2
+  br quit
+wait:                  # wait until all CPUs quit but CPU 0, barrier == cpunum
+  load r0, r1
+  cpunum r2
+  equ r2, r1
+  br sync
+  jr wait
+sync:                  # output 255 in synchronous mode, to flush output
+  loadi 255, r0
+  loadi 1, r1
+  outp  r0, r1
+quit:
+.literal 0
+barrier:
+.literal 0

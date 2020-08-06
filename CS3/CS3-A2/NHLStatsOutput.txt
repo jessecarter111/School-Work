@@ -1,0 +1,31 @@
+Player with the Most Points: St.Louis
+Team: TB
+Points: 60
+
+MVP: Carter
+Team: LA
+Game Winning Goals: 8
+
+Most Aggresive Player: Clowe
+Team: NYR
+Position: RW
+Penalties in Minutes: 93
+
+Most Aggresive Player: Ott
+Team: BUF
+Position: C
+Penalties in Minutes: 93
+
+Most promising player: Ovechkin
+Team: WSH
+Position: RW
+Shots on Goal: 220
+
+Least GWG team: FLA
+Least Game winning goals scored: 4
+
+GWG team: PIT
+Most game winning goals scored: 25
+
+Team with most penalties: BOS
+Penalty minutes: 294

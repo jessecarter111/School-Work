@@ -1,0 +1,4 @@
+./xas test.0.xas test.0.xo
+./xsim_gold 100000 test.0.xo > test0.out.gold
+./xsim 100000 test.0.xo > test0.out
+diff -y test0.out.gold test0.out

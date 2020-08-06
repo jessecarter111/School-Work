@@ -1,0 +1,22 @@
+#!/bin/bash
+
+make clean
+scan-build make
+if [ $? -ne "0" ]; then
+	echo ERROR: scan-build 1>&2
+	exit 255
+fi
+
+./build
+if [ $? -ne "0" ]; then
+	echo ERROR: build 1>&2
+	exit 255
+fi
+
+valgrind ./polyphase_test
+if [ $? -ne "0" ]; then
+	echo ERROR: valgrind 1>&2
+	exit 255
+fi
+
+exit 0
