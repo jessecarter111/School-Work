@@ -1,2 +1,2 @@
 # School-Work
-Selection of interesting and challenging assignments from throughout my degree
+Selection of interesting, challenging and fun assignments from throughout my degree
